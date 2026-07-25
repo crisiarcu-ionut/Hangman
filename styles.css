@@ -1,0 +1,10 @@
+.form-control::placeholder {
+    color: white;
+}
+.w-15 {
+    width: 15% !important;
+}
+.center-block {
+    margin-left: auto;
+    margin-right: auto;
+}
