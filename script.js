@@ -1,33 +1,22 @@
-const wordList = [
-    "tree",
-    "star",
-    "window",
-    "mountain",
-    "clock",
-    "suitcase",
-    "cloud",
-    "pencil",
-    "spring",
-    "butterfly"
-];
+const wordList = ['tree', 'star', 'window', 'mountain', 'clock', 'suitcase', 'cloud', 'pencil', 'spring', 'butterfly'];
 
 function startGame(){
     noLives = 7;
     chosenWordId = Math.floor(Math.random() * 10);
-    shownString = "_";
+    shownString = '_';
     for (let i = 1; i < wordList[chosenWordId].length; ++i) {
-        shownString = shownString.concat(" _");
+        shownString = shownString.concat(' _');
     }
     displayLives();
     displayWord(shownString);
 }
 
 function displayLives() {
-    document.getElementById("no-lives").innerHTML = noLives;
+    document.getElementById('no-lives').innerHTML = noLives;
 }
 
 function displayWord(string) {
-    document.getElementById("word").innerHTML = string;
+    document.getElementById('word').innerHTML = string;
 }
 
 function updateWord(letter) {
@@ -46,31 +35,31 @@ function updateWord(letter) {
     }
     if (isWin() || noLives == 0) {
         showEndOfGameText();
-        document.querySelector("form button").disabled = true;
+        document.querySelector('button').disabled = true;
         displayWord(wordList[chosenWordId]);
     }
 }
 
 function isWin() {
-    return !shownString.includes("_");
+    return !shownString.includes('_');
 }
 
 function showEndOfGameText() {
-    let endTextElement = document.getElementsByTagName("h3")[0];
-    if (!(isWin())) {
-        endTextElement.innerHTML = "You Lost!";
-        endTextElement.classList.replace("text-success", "text-danger");
+    let endTextElement = document.getElementsByTagName('h3')[0];
+    if (!isWin()) {
+        endTextElement.innerHTML = 'You Lost!';
+        endTextElement.classList.replace('text-success', 'text-danger');
     }
-    endTextElement.classList.remove("visually-hidden");
+    endTextElement.classList.remove('visually-hidden');
 }
 
 function onBtnClick() {
-    let letter = document.querySelector("form input").value;
+    let letter = document.querySelector('input').value;
     updateWord(letter);
 }
 
-document.querySelector("form input").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
+document.querySelector('input').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
         event.preventDefault();
         onBtnClick();
     }
